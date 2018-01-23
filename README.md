@@ -1,4 +1,5 @@
 # Spring, MongoDB and Kubernetes
+Clone from: [spring-mongodb-minikube](https://github.com/nhatthai/spring-mongodb-minikube)
 The following document describes the deployment of a basic Spring API Service and MongoDB web stack on Kubernetes. Currently this example does not use replica sets for MongoDB.
 
 Using Replication Controllers for building MongoDB
@@ -37,39 +38,39 @@ $ docker push nhatthai/api-service
 ##### Create Persitant Volume
 ```
 $ cd manifests
-$ kubectl create -f mongo-pv.yml
+$ kubectl apply -f mongo-pv.yml
 $ kubectl get pv
 ```
 
 ##### Create Persitant Volume Claim
 ```
 $ cd manifests
-$ kubectl create -f mongo-pvc.yml
+$ kubectl apply -f mongo-pvc.yml
 $ kubectl get pvc
 ```
 
 ##### Create MongoDB Controller
 ```
 $ cd manifests
-$ kubectl create -f mongo-controller.yml
+$ kubectl apply -f mongo-controller.yml
 ```
 
 ##### Create MongoDB Service
 ```
 $ cd manifests
-$ kubectl create -f mongo-service.yml
+$ kubectl apply -f mongo-service.yml
 ```
 
 ##### Create API Service Deployment
 ```
 $ cd manifests
-$ kubectl create -f api-deploy.yml
+$ kubectl apply -f api-deploy.yml
 ```
 
 ##### Create API Service
 ```
 $ cd manifests
-$ kubectl create -f api-service.yml
+$ kubectl apply -f api-service.yml
 ```
 
 ##### Check Services
@@ -85,6 +86,11 @@ $ kubectl describe replicationcontrollers/mongo-controller
 $ kubectl exec -it mongo-controller-vbqf4 -c mongo bash
 ```
 
+##### Create Dashboard
+```
+kubectl apply -f kubernetes-dashboard-1.6.0.yml
+```
+
 ##### Enable and Create Ingress
 ```
 $ minikube addons enable ingress
@@ -92,7 +98,7 @@ $ minikube addons enable ingress
 
 ```
 $ cd manifests
-$ kubectl create -f ingress.yml
+$ kubectl apply -f ingress.yml
 ```
 
 ##### Add mysite.com into /etc/hosts
@@ -117,7 +123,7 @@ Please checkout Git branch: replication-api-service
 
 ```
 $ cd manifests
-$ kubectl create -f api-controller.yml
+$ kubectl apply -f api-controller.yml
 ```
 
 ### Usage
