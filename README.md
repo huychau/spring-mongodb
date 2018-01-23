@@ -1,5 +1,4 @@
 # Spring, MongoDB and Kubernetes
-Clone from: [spring-mongodb-minikube](https://github.com/nhatthai/spring-mongodb-minikube)
 The following document describes the deployment of a basic Spring API Service and MongoDB web stack on Kubernetes. Currently this example does not use replica sets for MongoDB.
 
 Using Replication Controllers for building MongoDB
