@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: api-service
+  namespace: kube-system
   labels:
     run: api-service
 spec:

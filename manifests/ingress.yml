@@ -2,14 +2,20 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: gateway-ingress
+  namespace: kube-system
   annotations:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: mysite.com
-    http:
+  - http:
       paths:
       - backend:
           serviceName: api-service
-          servicePort: 8080
-        path: /
+          servicePort: 80
+        path: /api
+  - http:
+      paths:
+      - backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 80
+        path: /ui

@@ -1,7 +1,8 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: myclaim-1
+  name: mongo-pvc
+  namespace: kube-system
 spec:
   accessModes:
     - ReadWriteOnce
