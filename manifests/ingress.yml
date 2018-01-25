@@ -5,17 +5,21 @@ metadata:
   namespace: kube-system
   annotations:
     ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/ssl-redirect: "true"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
   - http:
       paths:
-      - backend:
-          serviceName: api-service
-          servicePort: 80
-        path: /api
-  - http:
-      paths:
-      - backend:
+      - path: /ui
+        backend:
           serviceName: kubernetes-dashboard
           servicePort: 80
-        path: /ui
+      - path: /api
+        backend:
+          serviceName: api-service
+          servicePort: 80
+      - path: /static
+        backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 80
